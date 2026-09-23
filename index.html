@@ -219,6 +219,13 @@ details > summary { cursor: pointer; font-weight: 700; color: var(--heading); le
 .v3d-tip { position: absolute; background: rgba(27,39,51,.94); color: #fff; font-size: 12px; padding: 7px 9px; border-radius: 7px; pointer-events: none; max-width: 240px; line-height: 1.35; }
 .v3d-help { position: absolute; right: 8px; top: 6px; font-size: 11px; color: var(--muted); background: rgba(255,255,255,.75); padding: 2px 6px; border-radius: 5px; }
 .adjusted-note { border-left: 4px solid var(--brand2); }
+.forecast-sw { background: repeating-linear-gradient(45deg, #F2A900 0 4px, #fff7dc 4px 8px) !important; }
+.forecast-note { background: #fff4d6; border: 1px dashed #d99a00; color: #5a3d00; display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+:root[data-theme="dark"] .forecast-note { background: #3a2c08; color: #ffd98a; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .forecast-note { background: #3a2c08; color: #ffd98a; } }
+.forecast-note .btn { margin-left: auto; }
+.layerbar button.fc { border-style: dashed; border-color: #d99a00; color: #8a5f00; }
+.layerbar button.fc.on { background: #F2A900; color: #1b2733; }
 /* Drawings keep a light "paper" background in both themes so carton colours and prints stay identical. */
 .pv-top, .pv-elev { color: #1b2733; }
 .brand-logo { height: 40px; width: auto; background: #fff; border-radius: 8px; padding: 4px 8px; display: block; }
@@ -258,7 +265,7 @@ details > summary { cursor: pointer; font-weight: 700; color: var(--heading); le
     <img class="brand-logo" src="data:image/png;base64,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" alt="RAMA">
     <div>
       <h1>PACKAGING GENIE</h1>
-      <div class="sub">Pallet &amp; container capacity · target-mix optimiser · 3D loading plans · load-safety checks · v1.2</div>
+      <div class="sub">Pallet &amp; container capacity · target-mix optimiser · 3D loading plans · load-safety checks · v1.3</div>
     </div>
   </div>
   <div class="header-actions">
@@ -422,7 +429,7 @@ details > summary { cursor: pointer; font-weight: 700; color: var(--heading); le
           <div class="field"><label for="cp-height">Loaded pallet height (mm, incl. base)</label><input id="cp-height" type="number" min="1" step="1" value="1650"></div>
           <div class="field"><label for="cp-gross">Gross weight per pallet (kg)</label><input id="cp-gross" type="number" min="0" step="0.1" value="600"></div>
         </div>
-        <div class="field"><label for="cp-clear">Clearance between pallets (mm)</label><input id="cp-clear" type="number" min="0" step="1" value="0"></div>
+        <div class="field"><label for="cp-clear">Clearance between pallets (mm)</label><input id="cp-clear" type="number" min="0" step="1" value="25"></div>
         <div class="btn-row" style="margin-bottom:10px"><button class="btn small" data-action="cp-use-last">Use last calculated pallet</button></div>
         <div class="hint" id="cp-last-info"></div>
         <button class="btn primary big block" data-action="run-contpal" style="margin-top:10px">CALCULATE CONTAINER LOAD</button>
@@ -473,7 +480,7 @@ function PalletEngineFactory() {
 
   /* ============================ CONFIGURATION ============================ */
   const CONFIG = {
-    VERSION: '1.2.0',
+    VERSION: '1.3.0',
     EPS: 1e-6,
     /* Deviation penalty multipliers per SKU priority (configurable). */
     PRIORITY_WEIGHTS: { High: 3, Normal: 1, Low: 0.5 },
@@ -491,6 +498,13 @@ function PalletEngineFactory() {
     LOCAL_SEARCH_TRIES: 25,
     MAX_LAYERS: 250,
     MAX_LAYER_BASES: 8,           /* layer-base candidates tried per layer when many SKUs are loaded */
+    EXACT_ENUM_LIMIT: 6000,       /* mixes with at most this many whole-carton combinations are solved exactly */
+    EXACT_ENUM_MS: 1500,          /* … unless the packer is too slow for that (estimated from earlier attempts) */
+    POLISH_RADIUS: { 4: 2, 6: 1 },/* neighbourhood polish: ±2 per SKU up to 4 SKUs, ±1 up to 6 SKUs */
+    NOT_LOADED_EXCESS_PP: 1,      /* a requested SKU with no carton counts as at least 1 pp outside tolerance */
+    PINWHEEL_MAX_CELLS: 1600,     /* 5-block (pinwheel) patterns are tried when the normal-position table is at most this big */
+    PINWHEEL_MAX_LOOPS: 1500000,  /* … the rectangle's own 4-nested search is at most this many steps … */
+    PINWHEEL_MS_PER_SOLVER: 120,  /* … and within this time budget per carton size */
     MAX_UNITS: 300,
     EXACT_MATCH_PP: 0.05,
     PROGRESS_EVERY: 15
@@ -707,6 +721,46 @@ function PalletEngineFactory() {
       else if (m.t === 'v') { buildDP(m.k, j, ox, oy, out); buildDP(m.rest, j, ox + xs[m.k], oy, out); }
       else { buildDP(i, m.k, ox, oy, out); buildDP(i, m.rest, ox, oy + ys[m.k], out); }
     }
+    /* 5-block "pinwheel" patterns (four blocks around a centre block, each block packed with the
+       guillotine DP). They reach the optimum in most cases where guillotine cuts alone cannot. */
+    const pmemo = new Map();
+    let ptime = 0, tab = null;
+    function T(i, j) { const k = i * ys.length + j; let v = tab[k]; if (v < 0) { v = (i <= 0 || j <= 0) ? 0 : G(i, j).n; tab[k] = v; } return v; }
+    function PW(i, j) {
+      const key = i * 100000 + j;
+      if (pmemo.has(key)) return pmemo.get(key);
+      let best = null;
+      const X = xs[i], Y = ys[j], base = G(i, j).n, ub = fl((X * Y) / (a * b));
+      if (base < ub && i >= 2 && j >= 2 && xs.length * ys.length <= CONFIG.PINWHEEL_MAX_CELLS && (i - 1) * (i - 1) * (j - 1) * (j - 1) <= CONFIG.PINWHEEL_MAX_LOOPS && ptime < CONFIG.PINWHEEL_MS_PER_SOLVER) {
+        const t0 = Date.now();
+        if (!tab) tab = new Int32Array(xs.length * ys.length).fill(-1);
+        const restX = [], restY = [];
+        for (let k = 0; k < i; k++) restX[k] = idxFloor(xs, X - xs[k]);
+        for (let k = 0; k < j; k++) restY[k] = idxFloor(ys, Y - ys[k]);
+        let bestN = base;
+        outer:
+        for (let i1 = 1; i1 < i; i1++) for (let i3 = 1; i3 < i; i3++) {
+          const cw = idxFloor(xs, Math.abs(xs[i1] - xs[i3]));
+          for (let j1 = 1; j1 < j; j1++) {
+            const b1 = T(i1, j1) + T(i3, restY[j1]);
+            for (let j2 = 1; j2 < j; j2++) {
+              if (!((i3 <= i1 && j1 <= j2) || (i3 >= i1 && j1 >= j2))) continue;
+              const n = b1 + T(restX[i1], j2) + T(restX[i3], restY[j2]) + T(cw, idxFloor(ys, Math.abs(ys[j2] - ys[j1])));
+              if (n > bestN) { bestN = n; best = { n, i1, i3, j1, j2 }; if (n >= ub) break outer; }
+            }
+          }
+        }
+        ptime += Date.now() - t0;
+      }
+      pmemo.set(key, best);
+      return best;
+    }
+    function buildPW(i, j, p, ox, oy, out) {
+      const X = xs[i], Y = ys[j], x1 = xs[p.i1], x3 = xs[p.i3], y1 = ys[p.j1], y2 = ys[p.j2];
+      const blk = (bx, by, w, h) => { const ii = idxFloor(xs, w), jj = idxFloor(ys, h); if (ii > 0 && jj > 0) buildDP(ii, jj, ox + bx, oy + by, out); };
+      blk(0, 0, x1, y1); blk(x1, 0, X - x1, y2); blk(x3, y2, X - x3, Y - y2); blk(0, y1, x3, Y - y1);
+      blk(Math.min(x1, x3), Math.min(y1, y2), Math.abs(x1 - x3), Math.abs(y2 - y1));
+    }
     function heuristicPlan(X, Y) {
       const key = X + '|' + Y;
       const hit = hmemo.get(key);
@@ -742,16 +796,18 @@ function PalletEngineFactory() {
     return {
       count(X, Y) {
         if (tooSmall(X, Y)) return 0;
-        return useDP ? G(idxFloor(xs, X), idxFloor(ys, Y)).n : heuristicPlan(X, Y).n;
+        if (!useDP) return heuristicPlan(X, Y).n;
+        const i = idxFloor(xs, X), j = idxFloor(ys, Y), p = PW(i, j);
+        return p ? p.n : G(i, j).n;
       },
       rects(X, Y) {
         if (tooSmall(X, Y)) return [];
         if (!useDP) return heuristicRects(X, Y);
-        const out = [];
-        buildDP(idxFloor(xs, X), idxFloor(ys, Y), 0, 0, out);
+        const out = [], i = idxFloor(xs, X), j = idxFloor(ys, Y), p = PW(i, j);
+        if (p) buildPW(i, j, p, 0, 0, out); else buildDP(i, j, 0, 0, out);
         return out;
       },
-      method: useDP ? 'guillotine-dp' : 'strip-heuristic'
+      method: useDP ? 'guillotine-dp + pinwheel' : 'strip-heuristic'
     };
   }
 
@@ -894,7 +950,6 @@ function PalletEngineFactory() {
     const cands = [];
     for (const it of ctx.items) {
       if (rem[it.idx] <= 0) continue;
-      if (it.idx !== pIdx && st.layersUsed[it.idx] >= it.maxLayers) continue;
       for (const s of it.stances) {
         if (s.h > layerH + EPS) continue;
         const flat = Math.abs(s.h - layerH) <= EPS;
@@ -938,18 +993,23 @@ function PalletEngineFactory() {
       vol += cd.rect.l * cd.rect.w * cd.h;
       weight += it.weight;
       if (it.supports && Math.abs(cd.h - layerH) <= EPS) flatArea += cd.rect.l * cd.rect.w;
+      /* Tiers that may still be stacked on this carton: its own limit and the limits of everything under it. */
+      let under = Infinity;
+      for (const r of st.support) { if (rectsOverlap(cd.rect, r)) under = Math.min(under, r.allow === undefined ? Infinity : r.allow); }
+      cd.allow = Math.min(it.supports ? it.maxLayers - 1 : 0, under - 1);
     }
     return { cartons, height: layerH, rem, vol, weight, flatArea, density: vol / (st.supportArea * layerH), primaryFoot: stance.a * stance.b, count: cartons.length };
   }
 
+  /* Carton tops that can carry the next layer: flat with the layer top, load-bearing, and with at least one tier of stacking allowance left. */
   function supportFrom(ctx, layer) {
-    return layer.cartons.filter(cd => ctx.items[cd.itemIdx].supports && Math.abs(cd.h - layer.height) <= EPS).map(cd => cd.rect);
+    return layer.cartons.filter(cd => ctx.items[cd.itemIdx].supports && Math.abs(cd.h - layer.height) <= EPS && cd.allow >= 1).map(cd => Object.assign({}, cd.rect, { allow: cd.allow }));
   }
 
   function runStrategy(ctx, counts, strat) {
     const R = ctx.region;
     const cl = ctx.geom.c;
-    const st = { remaining: counts.slice(), z: 0, support: [{ x: R.x, y: R.y, l: R.l, w: R.w }], supportActual: null, supportArea: R.l * R.w, layersUsed: counts.map(() => 0) };
+    const st = { remaining: counts.slice(), z: 0, support: [{ x: R.x, y: R.y, l: R.l, w: R.w, allow: Infinity }], supportActual: null, supportArea: R.l * R.w };
     const layers = [];
     while (st.remaining.some(v => v > 0)) {
       if (layers.length >= CONFIG.MAX_LAYERS || !st.support.length) return { ok: false, reason: 'SPACE' };
@@ -957,7 +1017,7 @@ function PalletEngineFactory() {
       const cands = [];
       /* With many SKUs only the most promising ones are tried as the layer base: the largest remaining
          volumes plus the tallest cartons (keeps big mixed shipments fast; results stay fully valid). */
-      let primaries = ctx.items.filter(it => st.remaining[it.idx] > 0 && st.layersUsed[it.idx] < it.maxLayers);
+      let primaries = ctx.items.filter(it => st.remaining[it.idx] > 0);
       if (primaries.length > CONFIG.MAX_LAYER_BASES) {
         const byVol = primaries.slice().sort((p, q) => (st.remaining[q.idx] * q.vol - st.remaining[p.idx] * p.vol) || (p.idx - q.idx));
         const byH = primaries.slice().sort((p, q) => (Math.max(...q.stances.map(x => x.h)) - Math.max(...p.stances.map(x => x.h))) || (p.idx - q.idx));
@@ -983,7 +1043,6 @@ function PalletEngineFactory() {
       layers.push({ z: r3(st.z), height: best.height, cartons: best.cartons });
       st.remaining = best.rem;
       st.z = r3(st.z + best.height);
-      new Set(best.cartons.map(cd => cd.itemIdx)).forEach(i => { st.layersUsed[i]++; });
       st.support = supportFrom(ctx, best);
       st.supportActual = st.support.map(r => ({ x: r.x, y: r.y, l: r3(r.l - cl), w: r3(r.w - cl) }));
       st.supportArea = st.support.reduce((s, r) => s + r.l * r.w, 0);
@@ -1075,17 +1134,16 @@ function PalletEngineFactory() {
   /* Fill column positions tier by tier: every SKU of the chain in turn, each carton on top of its column. */
   function simulateChain(ctx, bm, links, P, counts, emit) {
     const H = ctx.geom.usableH;
-    const top = new Array(P).fill(0), cnt = new Array(P).fill(0), carry = new Array(P).fill(true);
+    const top = new Array(P).fill(0), cnt = new Array(P).fill(0), carry = new Array(P).fill(true), allow = new Array(P).fill(Infinity);
     for (const link of links) {
       const it = ctx.items[link.i], maxL = bm.per[link.i].maxL, h = link.opt.s.h;
-      const used = new Array(P).fill(0);
       let left = counts[link.i];
       while (left > 0) {
         let placed = 0;
         for (let c = 0; c < P && left > 0; c++) {
-          if (!carry[c] || top[c] + h > H + EPS || used[c] >= maxL) continue;
+          if (!carry[c] || top[c] + h > H + EPS || allow[c] < 1) continue;
           if (emit) emit(c, top[c], link, cnt[c] + 1);
-          top[c] = r3(top[c] + h); used[c]++; cnt[c]++; carry[c] = it.supports; left--; placed++;
+          top[c] = r3(top[c] + h); cnt[c]++; carry[c] = it.supports; allow[c] = Math.min(allow[c] - 1, maxL - 1); left--; placed++;
         }
         if (!placed) return false;
       }
@@ -1097,26 +1155,25 @@ function PalletEngineFactory() {
      column by column: O(runs × tiers) instead of O(cartons). Verified equal by tests. */
   function chainFeasible(ctx, bm, links, P, counts) {
     const H = ctx.geom.usableH;
-    let runs = [{ len: P, top: 0, carry: true }];
+    let runs = [{ len: P, top: 0, carry: true, allow: Infinity }];
     for (const link of links) {
       const it = ctx.items[link.i], maxL = bm.per[link.i].maxL, h = link.opt.s.h;
-      runs.forEach(r => { r.used = 0; });
       let left = counts[link.i];
       while (left > 0) {
-        const ok = r => r.carry && r.top + h <= H + EPS && r.used < maxL;
+        const ok = r => r.carry && r.top + h <= H + EPS && r.allow >= 1;
         let eligible = 0;
         for (const r of runs) if (ok(r)) eligible += r.len;
         if (!eligible) return false;
         if (left >= eligible) {
-          for (const r of runs) if (ok(r)) { r.top = r3(r.top + h); r.used++; r.carry = it.supports; }
+          for (const r of runs) if (ok(r)) { r.top = r3(r.top + h); r.carry = it.supports; r.allow = Math.min(r.allow - 1, maxL - 1); }
           left -= eligible;
         } else {
           const next = [];
           for (const r of runs) {
             if (left > 0 && ok(r)) {
               const take = Math.min(r.len, left);
-              next.push({ len: take, top: r3(r.top + h), carry: it.supports, used: r.used + 1 });
-              if (take < r.len) next.push({ len: r.len - take, top: r.top, carry: r.carry, used: r.used });
+              next.push({ len: take, top: r3(r.top + h), carry: it.supports, allow: Math.min(r.allow - 1, maxL - 1) });
+              if (take < r.len) next.push({ len: r.len - take, top: r.top, carry: r.carry, allow: r.allow });
               left -= take;
             } else next.push(r);
           }
@@ -1430,7 +1487,6 @@ function PalletEngineFactory() {
     }
     const byTop = new Map();
     for (const p of placements) {
-      if (!ctx.items[p.itemIdx].supports) continue;
       const k = r3(p.z + p.h);
       if (!byTop.has(k)) byTop.set(k, []);
       byTop.get(k).push(p);
@@ -1439,15 +1495,34 @@ function PalletEngineFactory() {
     const topGrid = k => { if (!topGrids.has(k)) topGrids.set(k, makeGrid(byTop.get(k) || [])); return topGrids.get(k); };
     for (const p of placements) {
       if (p.z <= tol) continue;
-      /* Strict: the real footprint must rest on real carton tops (clearance gaps are air). */
+      /* Strict: the real footprint must rest on real, load-bearing carton tops (clearance gaps are air). */
       const list = byTop.has(r3(p.z)) ? topGrid(r3(p.z)).query(p.x - 1, p.y - 1, p.l + 2, p.w + 2) : [];
       let covered = 0;
       for (const q of list) {
+        if (!ctx.items[q.itemIdx].supports) continue;
         const ix = Math.min(p.x + p.l, q.x + q.l) - Math.max(p.x, q.x);
         const iy = Math.min(p.y + p.w, q.y + q.w) - Math.max(p.y, q.y);
         if (ix > 0 && iy > 0) covered += ix * iy;
       }
       if (covered < p.l * p.w - 1) fail('support', `Carton #${p.id} (${p.sku}) is not fully supported (${r1((100 * covered) / (p.l * p.w))}% of its base).`);
+    }
+    /* Stacking limits: the longest chain of cartons resting on a carton may not exceed its maximum stack layers − 1
+       (0 for fragile / non-supporting cartons). */
+    const children = new Map();
+    for (const p of placements) {
+      if (p.z <= tol) continue;
+      const list = byTop.has(r3(p.z)) ? topGrid(r3(p.z)).query(p.x - 1, p.y - 1, p.l + 2, p.w + 2) : [];
+      for (const q of list) {
+        const ix = Math.min(p.x + p.l, q.x + q.l) - Math.max(p.x, q.x), iy = Math.min(p.y + p.w, q.y + q.w) - Math.max(p.y, q.y);
+        if (ix > tol && iy > tol) { if (!children.has(q.id)) children.set(q.id, []); children.get(q.id).push(p); }
+      }
+    }
+    const depthMemo = new Map();
+    const depth = p => { if (depthMemo.has(p.id)) return depthMemo.get(p.id); let d = 0; for (const ch of children.get(p.id) || []) d = Math.max(d, 1 + depth(ch)); depthMemo.set(p.id, d); return d; };
+    for (const p of placements) {
+      const it = ctx.items[p.itemIdx], limit = it.supports ? (isFinite(it.maxLayers) ? it.maxLayers - 1 : Infinity) : 0;
+      const d = depth(p);
+      if (d > limit) fail('support', `Carton #${p.id} (${p.sku}) has ${d} tier${d === 1 ? '' : 's'} stacked on it; its maximum is ${limit}.`);
     }
     const net = placements.reduce((s, p) => s + p.weight, 0);
     if (net > g.maxNet + 1e-6) fail('weight', `Net weight ${r2(net)} kg exceeds the allowed ${r2(g.maxNet)} kg.`);
@@ -1475,13 +1550,13 @@ function PalletEngineFactory() {
       if (it.stances.length > 1 && maxL >= 1) variants.push(maxL - 1);
       for (const k of variants) {
         const layers = [];
-        for (let li = 0; li < k; li++) layers.push({ z: r3(li * s.h), height: s.h, cartons: rects.map(r => ({ itemIdx: it.idx, rect: r, h: s.h })) });
+        for (let li = 0; li < k; li++) layers.push({ z: r3(li * s.h), height: s.h, cartons: rects.map(r => ({ itemIdx: it.idx, rect: r, h: s.h, allow: it.supports ? it.maxLayers - (li + 1) : 0 })) });
         let z = r3(k * s.h);
-        let support = k ? rects : [{ x: R.x, y: R.y, l: R.l, w: R.w }];
-        let used = k;
-        while (used < (it.supports ? it.maxLayers : 1) && layers.length < CONFIG.MAX_LAYERS && support.length) {
+        const topAllow = it.supports ? it.maxLayers - k : 0;
+        let support = k ? (topAllow >= 1 ? rects.map(r => Object.assign({}, r, { allow: topAllow })) : []) : [{ x: R.x, y: R.y, l: R.l, w: R.w, allow: Infinity }];
+        while (layers.length < CONFIG.MAX_LAYERS && support.length) {
           const onFloor = layers.length === 0;
-          const st = { remaining: ctx.items.map((_, j) => (j === it.idx ? 1e9 : 0)), z, support, supportActual: onFloor ? null : support.map(r => ({ x: r.x, y: r.y, l: r3(r.l - c), w: r3(r.w - c) })), supportArea: support.reduce((sa, r) => sa + r.l * r.w, 0), layersUsed: ctx.items.map(() => 0) };
+          const st = { remaining: ctx.items.map((_, j) => (j === it.idx ? 1e9 : 0)), z, support, supportActual: onFloor ? null : support.map(r => ({ x: r.x, y: r.y, l: r3(r.l - c), w: r3(r.w - c) })), supportArea: support.reduce((sa, r) => sa + r.l * r.w, 0) };
           const fs = freeSpaceFromSupport(R, support);
           let bestL = null;
           for (const s2 of it.stances) {
@@ -1491,7 +1566,6 @@ function PalletEngineFactory() {
           if (!bestL) break;
           layers.push({ z, height: bestL.height, cartons: bestL.cartons });
           z = r3(z + bestL.height);
-          used++;
           support = supportFrom(ctx, bestL);
         }
         const total = layers.reduce((sa, L) => sa + L.cartons.length, 0);
@@ -1752,7 +1826,7 @@ function PalletEngineFactory() {
     const extras = (req.fillProducts || []).filter(p => p && !baseIds.has(p.id) && p.active !== false && !validateProductRecord(p).length).slice(0, 15);
     const raw = baseRaw.concat(extras);
     const items = raw.map((p, i) => buildItem(normaliseProduct(p), i, geom, req.orientationPolicy));
-    const ctx = { geom, items, region: geom.region, solvers: new Map() };
+    const ctx = { geom, items, region: geom.region, solvers: opts.solvers || new Map() };
     const nb = baseRaw.length;
     const n0 = counts.concat(extras.map(() => 0));
     const oracle = makeOracle(ctx, null);
@@ -1796,6 +1870,139 @@ function PalletEngineFactory() {
       if (c.adds.length > 1 && c.newCapUtil > bestSingle + 0.05 && verify(comb)) combined = c;
     }
     return { current, freeM3: r3(Math.max(0, (availVol - volNow) / 1e9)), suggestions: verified, combined, extrasConsidered: extras.length, note: '' };
+  }
+
+  /* ================== FORECAST FILL ("what would fill the gaps?") =========
+     Keeps every planned carton where it is and fills the exposed surfaces
+     (pallet/container floor and carton tops with stacking allowance) with
+     candidate cartons – mix SKUs first, then other active products – stacked
+     in tiers up to the usable height. The combined load is validated. */
+  function forecastFor(req, baseRaw, plan, counts, opts) {
+    opts = opts || {};
+    const geom = buildGeometry(req.unit, req);
+    if (geom.errors.length || !plan) return null;
+    const baseIds = new Set(baseRaw.map(p => p.id));
+    const extras = (req.fillProducts || []).filter(p => p && !baseIds.has(p.id) && p.active !== false && !validateProductRecord(p).length).slice(0, 15);
+    const raw = baseRaw.concat(extras);
+    const items = raw.map((p, i) => buildItem(normaliseProduct(p), i, geom, req.orientationPolicy));
+    const ctx = { geom, items, region: geom.region, solvers: opts.solvers || new Map() };
+    const nb = baseRaw.length, c = geom.c, R = ctx.region, tol = 1e-3;
+    const limit = items.map((it, i) => (i < nb && opts.maxAdd && isFinite(opts.maxAdd[i]) ? Math.max(0, opts.maxAdd[i]) : Infinity));
+    const P = plan.placements;
+    let net = P.reduce((s2, p) => s2 + p.weight, 0);
+    /* Stacking allowance of each planned carton (tiers it may still carry) – own limit and the limits below it. */
+    const byTop = new Map();
+    P.forEach(p => { const k = r3(p.z + p.h); if (!byTop.has(k)) byTop.set(k, []); byTop.get(k).push(p); });
+    const restsOn = new Map(), children = new Map();
+    for (const p of P) {
+      if (p.z <= tol) { restsOn.set(p.id, []); continue; }
+      const sup = (byTop.get(r3(p.z)) || []).filter(q => Math.min(p.x + p.l, q.x + q.l) - Math.max(p.x, q.x) > tol && Math.min(p.y + p.w, q.y + q.w) - Math.max(p.y, q.y) > tol);
+      restsOn.set(p.id, sup);
+      sup.forEach(q => { if (!children.has(q.id)) children.set(q.id, []); children.get(q.id).push(p); });
+    }
+    const depthMemo = new Map(), effMemo = new Map();
+    const depth = p => { if (depthMemo.has(p.id)) return depthMemo.get(p.id); let d = 0; (children.get(p.id) || []).forEach(ch => { d = Math.max(d, 1 + depth(ch)); }); depthMemo.set(p.id, d); return d; };
+    const eff = p => {
+      if (effMemo.has(p.id)) return effMemo.get(p.id);
+      const it = items[p.itemIdx];
+      let e = it.supports ? (isFinite(it.maxLayers) ? it.maxLayers - 1 : Infinity) - depth(p) : 0;
+      (restsOn.get(p.id) || []).forEach(q => { e = Math.min(e, eff(q)); });
+      effMemo.set(p.id, e);
+      return e;
+    };
+    /* Exposed surfaces: the floor, and every carton top with allowance and nothing standing on it. */
+    const levels = new Map();
+    levels.set(0, { z: 0, supports: [{ x: R.x, y: R.y, l: R.l, w: R.w, allow: Infinity }], actual: null });
+    for (const p of P) {
+      if (!items[p.itemIdx].supports || eff(p) < 1) continue;
+      const k = r3(p.z + p.h);
+      if (!levels.has(k)) levels.set(k, { z: k, supports: [], actual: [] });
+      const L = levels.get(k);
+      L.supports.push({ x: p.x, y: p.y, l: r3(p.l + c), w: r3(p.w + c), allow: eff(p) });
+      L.actual.push({ x: p.x, y: p.y, l: p.l, w: p.w });
+    }
+    const added = items.map(() => 0);
+    const out = [];
+    const pass = (candIdx) => {
+      for (const L of [...levels.values()].sort((p, q) => p.z - q.z)) {
+        if (L.z >= geom.usableH - EPS) continue;
+        const availH = r3(geom.usableH - L.z);
+        const fs = freeSpaceFromSupport(R, L.supports);
+        for (const p of P) if (Math.abs(p.z - L.z) <= tol) fs.occupy({ x: p.x, y: p.y, l: r3(p.l + c), w: r3(p.w + c) });
+        for (const q of out) if (Math.abs(q.z - L.z) <= tol) fs.occupy({ x: q.x, y: q.y, l: r3(q.l + c), w: r3(q.w + c) });
+        let guard = 0;
+        while (fs.free.length && guard++ < 200) {
+          let best = null;
+          for (const f of fs.free) {
+            let allowHere = Infinity;
+            for (const r of L.supports) if (rectsOverlap(f, r)) allowHere = Math.min(allowHere, r.allow);
+            for (const i of candIdx) {
+              const it = items[i];
+              if (added[i] >= limit[i] || it.weight > geom.maxNet - net + 1e-9) continue;
+              for (const st of it.stances) {
+                if (st.h > availH + EPS) continue;
+                const A = r3(st.a + c), B = r3(st.b + c);
+                if (!((A <= f.l + EPS && B <= f.w + EPS) || (B <= f.l + EPS && A <= f.w + EPS))) continue;
+                const per = getSolver(ctx, A, B).count(f.l, f.w);
+                if (!per) continue;
+                const tiers = Math.max(1, Math.min(Math.floor(availH / st.h + EPS), it.supports ? it.maxLayers : 1, allowHere));
+                const val = per * tiers * it.vol;
+                if (!best || val > best.val + 1e-9) best = { f, i, st, A, B, tiers, val };
+              }
+            }
+          }
+          if (!best) break;
+          const it = items[best.i];
+          const fsCopy = fs.clone();
+          let rects = fillPattern(ctx, fsCopy, best.A, best.B, 1e9).filter(r => rectsOverlap(r, best.f));
+          if (L.actual) rects = rects.filter(r => { const Ar = { x: r.x, y: r.y, l: r.l - c, w: r.w - c }; let cov = 0; for (const q of L.actual) { const ix = Math.min(Ar.x + Ar.l, q.x + q.l) - Math.max(Ar.x, q.x), iy = Math.min(Ar.y + Ar.w, q.y + q.w) - Math.max(Ar.y, q.y); if (ix > 0 && iy > 0) cov += ix * iy; } return cov >= Ar.l * Ar.w - 1; });
+          if (!rects.length) { fs.occupy(best.f); continue; }
+          let placedAny = false;
+          for (const r of rects) {
+            let allowHere = Infinity;
+            for (const sr of L.supports) if (rectsOverlap(r, sr)) allowHere = Math.min(allowHere, sr.allow);
+            const tiers = Math.max(1, Math.min(Math.floor(availH / best.st.h + EPS), it.supports ? it.maxLayers : 1, allowHere));
+            for (let t = 0; t < tiers; t++) {
+              if (added[best.i] >= limit[best.i] || it.weight > geom.maxNet - net + 1e-9) break;
+              out.push({ itemIdx: best.i, x: r.x, y: r.y, z: r3(L.z + t * best.st.h), l: r3(r.l - c), w: r3(r.w - c), h: best.st.h });
+              added[best.i]++; net += it.weight; placedAny = true;
+            }
+            fs.occupy(r);
+          }
+          if (!placedAny) fs.occupy(best.f);
+        }
+      }
+    };
+    const mixIdx = items.map((_, i) => i).filter(i => i < nb && !items[i].problem && items[i].stances.length);
+    const allIdx = items.map((_, i) => i).filter(i => !items[i].problem && items[i].stances.length);
+    pass(mixIdx);
+    if (extras.length) pass(allIdx);
+    const before = { capUtil: r1(Math.max(plan.kpis.volumeUtil, plan.kpis.weightUtil || 0)) };
+    if (!out.length) return { placements: [], adds: [], addCartons: 0, addUnits: 0, addWeight: 0, after: null, before, layers: [], valid: true, extrasConsidered: extras.length };
+    /* Combined validation, then present the forecast cartons with their own ids and layer numbers. */
+    const combined = P.map(p => Object.assign({}, p)).concat(out.map((q, k) => {
+      const it = items[q.itemIdx], o = orientationCode(it, q.l, q.w, q.h);
+      return { itemIdx: q.itemIdx, productId: it.id, sku: it.sku, layer: 0, x: q.x, y: q.y, z: q.z, l: q.l, w: q.w, h: q.h, weight: it.weight, units: it.units, orientation: o.code, orientationDesc: o.desc, forecast: true, id: P.length + k + 1 };
+    }));
+    const countsAll = items.map((_, i) => (i < nb ? counts[i] : 0) + added[i]);
+    const v = validatePlacement(ctx, combined, countsAll);
+    if (!v.ok) return { placements: [], adds: [], after: null, valid: false, note: v.errors[0], extrasConsidered: extras.length };
+    const fc = combined.filter(p => p.forecast).sort((p, q) => (p.z - q.z) || (p.y - q.y) || (p.x - q.x));
+    let maxLayer = plan.layers.length ? Math.max(...plan.layers.map(L => L.no)) : 0;
+    const newLayers = new Map();
+    fc.forEach((p, k) => {
+      p.id = 'F' + (k + 1);
+      const L = plan.layers.find(x => p.z >= x.z - tol && p.z < x.top - tol);
+      if (L) p.layer = L.no;
+      else { const zk = r3(p.z); if (!newLayers.has(zk)) newLayers.set(zk, ++maxLayer); p.layer = newLayers.get(zk); }
+    });
+    const k2 = computeKpis(ctx, combined);
+    const adds = items.map((it, i) => ({ productId: it.id, sku: it.sku, add: added[i], units: added[i] * it.units, weight: r2(added[i] * it.weight), inMix: i < nb })).filter(a => a.add > 0);
+    return {
+      placements: fc, adds, addCartons: adds.reduce((s2, a) => s2 + a.add, 0), addUnits: adds.reduce((s2, a) => s2 + a.units, 0), addWeight: r2(adds.reduce((s2, a) => s2 + a.weight, 0)),
+      after: { cartons: k2.totalCartons, units: k2.totalUnits, grossWeight: k2.grossWeight, stackHeight: k2.stackHeight, volumeUtil: k2.volumeUtil, weightUtil: k2.weightUtil, capUtil: r1(Math.max(k2.volumeUtil, k2.weightUtil || 0)) },
+      before, layers: [...newLayers.entries()].map(([z, no]) => ({ no, z })), valid: true, extrasConsidered: extras.length
+    };
   }
 
   function applyFillToAssessment(a, fill) {
@@ -1857,10 +2064,11 @@ function PalletEngineFactory() {
     ];
     if (weightLimited) explanation.push(`Weight limit: ${fmt(geom.maxNet, 2)} kg net ÷ ${it.weight} kg = ${capW} cartons, so ${physicalMax - capW} carton(s) were removed from the top of the stack.`);
     const assessment = assessPlan(ctx, plan, null, req.assessment);
-    const fill = req.noFill ? null : fillSuggestions(req, [req.product], [cartons.length]);
+    const fill = req.noFill ? null : fillSuggestions(req, [req.product], [cartons.length], { solvers: ctx.solvers });
+    const forecast = req.noFill ? null : forecastFor(req, [req.product], plan, [cartons.length], { solvers: ctx.solvers });
     applyFillToAssessment(assessment, fill);
     return {
-      assessment, fill,
+      assessment, fill, forecast,
       ok: true, warnings: prep.warnings, sku: it.sku, productId: it.id, plan,
       summary: {
         bestOrientation: stanceLabel(sp.stance), arrangement, perLayer: sp.perLayer, layers: sp.baseLayers, topUpLayers: sp.layers.length - sp.baseLayers,
@@ -1873,28 +2081,29 @@ function PalletEngineFactory() {
   }
 
   /* ================== ORACLE (cached feasibility checks) ================= */
+  /* Cached feasibility oracle. (No "dominance" shortcut: the packer is a heuristic, so a load that
+     failed does not prove that a larger load fails too.) */
   function makeOracle(ctx, hooks) {
-    const cache = new Map(), bad = [];
-    let evals = 0;
+    const cache = new Map();
+    let evals = 0, extra = 0, ms = 0;
     const fn = n => {
       const key = n.join(',');
       const hit = cache.get(key);
       if (hit) return hit;
-      for (const b of bad) {
-        let dom = true;
-        for (let i = 0; i < n.length; i++) if (n[i] < b[i]) { dom = false; break; }
-        if (dom) { const r = { ok: false, reason: 'DOMINATED' }; cache.set(key, r); return r; }
-      }
-      evals++;
-      if (hooks && hooks.progress && evals % CONFIG.PROGRESS_EVERY === 0) hooks.progress(evals);
+      if (fn.extraPhase) extra++; else evals++;
+      if (hooks && hooks.progress && (evals + extra) % CONFIG.PROGRESS_EVERY === 0) hooks.progress(evals + extra);
+      const t0 = Date.now();
       const res = packCounts(ctx, n, false);
+      ms += Date.now() - t0;
       const r = { ok: res.ok, reason: res.reason };
       cache.set(key, r);
-      if (!r.ok && bad.length < 600) bad.push(n.slice());
       return r;
     };
-    fn.stats = () => ({ evaluations: evals, combinationsChecked: cache.size });
+    fn.extraPhase = false;
+    fn.stats = () => ({ evaluations: evals + extra, combinationsChecked: cache.size });
     fn.exhausted = () => evals >= CONFIG.MAX_PACK_EVALUATIONS;
+    fn.avgMs = () => (evals + extra ? ms / (evals + extra) : 1);
+    fn.has = n => cache.has(n.join(','));
     return fn;
   }
 
@@ -1982,9 +2191,10 @@ function PalletEngineFactory() {
       let E = 0, excess = 0, maxDev = 0, within = 0;
       for (const i of M) {
         const d = Math.abs(dev[i]);
-        E += pw[i] * d; excess += pw[i] * Math.max(0, d - tol);
+        const notLoaded = n[i] === 0 && targets[i] > 0;
+        E += pw[i] * d; excess += pw[i] * (notLoaded ? Math.max(d - tol, CONFIG.NOT_LOADED_EXCESS_PP) : Math.max(0, d - tol));
         maxDev = Math.max(maxDev, d);
-        if (d <= tol + 1e-9) within++;
+        if (d <= tol + 1e-9 && !notLoaded) within++;
       }
       const vol = volOf(ctx, n), weight = weightOf(ctx, n);
       const volUtil = (100 * vol) / availVol, wUtil = isFinite(geom.maxNet) ? (100 * weight) / geom.maxNet : 0;
@@ -2004,6 +2214,7 @@ function PalletEngineFactory() {
 
     const pool = new Map();
     const record = n => { pool.set(n.join(','), n.slice()); };
+    const searchInfo = { exact: false, polished: false, combinationSpace: null };
     if (fixed) record(fixed);
     else if (oracle(lo).ok) record(lo);
 
@@ -2084,6 +2295,49 @@ function PalletEngineFactory() {
         const ranked = [...pool.values()].sort((p, q) => score(q, mode) - score(p, mode));
         ranked.slice(0, 2).forEach(start => localSearch(start, mode));
       }
+      /* B2 — exact enumeration of every whole-carton combination when the (volume/weight-pruned) space is
+         small enough; otherwise a bounded neighbourhood polish around each objective's best candidate. */
+      oracle.extraPhase = true;
+      const vols = items.map(it => it.vol), wts = items.map(it => it.weight);
+      let combos = 0;
+      (function countSpace(i, vol, wt) {
+        if (combos > CONFIG.EXACT_ENUM_LIMIT) return;
+        if (i === S) { combos++; return; }
+        for (let v = lo[i]; v <= hi[i]; v++) { const nv = vol + v * vols[i], nw = wt + v * wts[i]; if (nv > availVol + 1e-6 || nw > geom.maxNet + 1e-9) break; countSpace(i + 1, nv, nw); if (combos > CONFIG.EXACT_ENUM_LIMIT) return; }
+      })(0, 0, 0);
+      searchInfo.combinationSpace = combos > CONFIG.EXACT_ENUM_LIMIT ? null : combos;
+      if (combos <= CONFIG.EXACT_ENUM_LIMIT && combos * oracle.avgMs() <= CONFIG.EXACT_ENUM_MS) {
+        const tEnd = Date.now() + 2 * CONFIG.EXACT_ENUM_MS;
+        let complete = true;
+        (function enumerate(i, n, vol, wt) {
+          if (!complete) return;
+          if (i === S) { if (Date.now() > tEnd) { complete = false; return; } if (oracle(n).ok) record(n); return; }
+          for (let v = lo[i]; v <= hi[i]; v++) { const nv = vol + v * vols[i], nw = wt + v * wts[i]; if (nv > availVol + 1e-6 || nw > geom.maxNet + 1e-9) break; n[i] = v; enumerate(i + 1, n, nv, nw); if (!complete) return; }
+          n[i] = lo[i];
+        })(0, lo.slice(), 0, 0);
+        searchInfo.exact = complete;
+      }
+      if (!searchInfo.exact) {
+        const R = S <= 4 ? CONFIG.POLISH_RADIUS[4] : S <= 6 ? CONFIG.POLISH_RADIUS[6] : 0;
+        if (R > 0) for (const mode of ['match', 'balanced', 'util']) {
+          for (let round = 0; round < 3; round++) {
+            const cur = [...pool.values()].sort((p, q) => score(q, mode) - score(p, mode))[0];
+            if (!cur) break;
+            const curS = score(cur, mode), moves = [], idx = new Array(S).fill(-R);
+            for (;;) {
+              const v = cur.map((x, i) => x + idx[i]);
+              if (inBounds(v) && !oracle.has(v)) { const sc = score(v, mode); if (sc > curS + 1e-9) moves.push({ v, sc }); }
+              let k = 0; while (k < S && ++idx[k] > R) { idx[k] = -R; k++; } if (k === S) break;
+            }
+            moves.sort((p, q) => q.sc - p.sc);
+            let improved = false;
+            for (const m of moves.slice(0, 60)) { if (oracle(m.v).ok) { record(m.v); improved = true; break; } }
+            if (!improved) break;
+          }
+        }
+        searchInfo.polished = R > 0;
+      }
+      oracle.extraPhase = false;
     }
     if (!pool.size) return { ok: false, warnings, errors: [`No carton combination could be placed on this ${geom.kind}.`] };
 
@@ -2107,9 +2361,10 @@ function PalletEngineFactory() {
     scenarios.forEach(sc => {
       if (req.noFill) { sc.fill = null; return; }
       const maxAdd = items.map((_, i) => (rows[i].added ? Infinity : locked[i] ? 0 : isFinite(rowMax[i]) ? rowMax[i] - sc.counts[i] : Infinity));
-      if (!fillCache.has(sc.key)) fillCache.set(sc.key, fillSuggestions(req, rows.map(r => r.product), sc.counts, { mixEval, maxAdd }));
+      if (!fillCache.has(sc.key)) fillCache.set(sc.key, fillSuggestions(req, rows.map(r => r.product), sc.counts, { mixEval, maxAdd, solvers: ctx.solvers }));
       sc.fill = fillCache.get(sc.key);
       applyFillToAssessment(sc.assessment, sc.fill);
+      sc.forecast = forecastFor(req, rows.map(r => r.product), sc.plan, sc.counts, { maxAdd, solvers: ctx.solvers });
     });
     scenarios.forEach((sc, k) => {
       const same = scenarios.findIndex(o => o.key === sc.key);
@@ -2200,7 +2455,7 @@ function PalletEngineFactory() {
       details: {
         unit: geomSummary(geom), limits: unitLimitsText(geom),
         products: items.map((it, i) => ({ sku: it.sku, dims: `${it.l} × ${it.w} × ${it.h} mm`, units: it.units, weight: it.weight, orientations: it.stances.map(stanceLabel), singleCap: capSingle[i], min: lo[i], max: isFinite(hi[i]) ? hi[i] : null, locked: locked[i], target: targets[i], priority: prio[i], priorityWeight: pw[i] })),
-        search: Object.assign(st, { candidatesKept: pool.size, ms: Date.now() - t0, budget: CONFIG.MAX_PACK_EVALUATIONS }),
+        search: Object.assign(st, searchInfo, { candidatesKept: pool.size, ms: Date.now() - t0, budget: CONFIG.MAX_PACK_EVALUATIONS }),
         basis, tolerance: tol, modeWeights: CONFIG.MODE_WEIGHTS, priorityWeights: CONFIG.PRIORITY_WEIGHTS
       }
     };
@@ -2300,8 +2555,9 @@ function PalletEngineFactory() {
       const u = { no: k + 1, counts: n, description: describeCounts(ctx, n), plan, ok: !!(plan && plan.validation.ok) };
       if (plan) {
         u.assessment = assessPlan(ctx, plan, null, req && req.assessment);
-        u.fill = req && rows && !req.noFill && list.length <= 20 ? fillSuggestions(req, rows.map(r => r.product), n) : null;
+        u.fill = req && rows && !req.noFill && list.length <= 20 ? fillSuggestions(req, rows.map(r => r.product), n, { solvers: ctx.solvers }) : null;
         applyFillToAssessment(u.assessment, u.fill);
+        u.forecast = req && rows && !req.noFill && list.length <= 20 ? forecastFor(req, rows.map(r => r.product), plan, n, { solvers: ctx.solvers }) : null;
       }
       return u;
     });
@@ -2411,7 +2667,7 @@ function PalletEngineFactory() {
     summariseAssessment(assessment);
     if (tiersAllowed > 1 && tiers < tiersAllowed) warnings.push(`Stacking ${tiersAllowed} high is not possible: ${tiersAllowed} × ${loadedH} mm exceeds the ${C.height} mm internal height.`);
     return {
-      ok: true, warnings, plan, assessment, spare, perFloor, tiers, spaceCap, weightCap: isFinite(weightCap) ? weightCap : null, perContainer, containers, quantity: qty,
+      ok: true, warnings, plan, assessment, spare, forecast: forecastFor({ unit, orientationPolicy: 'upright', clearance: req.clearance, fillProducts: [] }, [pseudo], plan, [cartons.length]), perFloor, tiers, spaceCap, weightCap: isFinite(weightCap) ? weightCap : null, perContainer, containers, quantity: qty,
       lastContainerLoad: qty ? qty - (containers - 1) * perContainer : null, simpleGrid, constraint,
       floorUtil: r1((100 * perFloor * PL * PW) / (RL * RW)), grossPerContainer: r2(load1 * gross),
       container: { name: C.name, length: RL, width: RW, height: num(C.height), doorHeight: C.doorHeight, maxPayload: C.maxPayload },
@@ -2585,6 +2841,25 @@ function PalletEngineFactory() {
       add(G, '“What else fits” respects Max cartons and Locked quantities', capped.ok && viol.length === 0, `${viol.length} suggestions break a max or lock`);
       add(G, 'Maximum stack layers must be a whole number ≥ 1', validateProductRecord({ sku: 'X', length: 1, width: 1, height: 1, weight: 1, unitsPerCarton: 1, maxStackLayers: 0.5 }).length === 1, 'value 0.5 is rejected');
     }
+    {
+      const G = 'Audit fixes (v1.3)';
+      const tD = optimiseMix({ unit: Object.assign(unitOf(euro), { maxGross: 500 }), orientationPolicy: 'sku', clearance: 0, basis: 'cartons', tolerance: 5, mode: 'balanced', noFill: true, rows: [['P24C2D2', 50], ['Carbon Filters', 25], ['POSTreat', 25]].map(([sku, target]) => ({ product: P(sku), target, priority: 'Normal' })) });
+      const balD = tD.ok && tD.scenarios.find(s2 => s2.mode === 'balanced');
+      add(G, 'Test D: the search finds the best feasible load (Balanced ≥ 15 cartons, all within tolerance)', !!balD && balD.plan.kpis.totalCartons >= 15 && balD.metrics.within === 3 && balD.plan.validation.ok, balD ? `${balD.counts.join('/')} = ${balD.plan.kpis.totalCartons} cartons, ${fmt(balD.plan.kpis.volumeUtil, 1)}% volume, exact search ${tD.details.search.exact ? 'completed' : 'not used'}` : (tD.errors || []).join(' '));
+      const nl = optimiseMix({ unit: unitOf(euro), orientationPolicy: 'sku', clearance: 0, basis: 'cartons', tolerance: 5, mode: 'balanced', noFill: true, rows: [{ product: P('P12C2D0'), target: 96, priority: 'Normal' }, { product: P('POSTreat'), target: 4, priority: 'Normal' }], fixedCounts: [48, 0] });
+      const nls = nl.ok && nl.scenarios[0];
+      add(G, 'A requested SKU with no carton is never reported as within tolerance', !!nls && nls.quality === 'TARGET APPROXIMATION REQUIRED' && nls.metrics.within === 1 && nls.assessment.checks.find(c => c.key === 'mix').status === 'red', nls ? `quality "${nls.quality}", ${nls.facts[0]}` : (nl.errors || []).join(' '));
+      const p12cap = Object.assign({}, P('P12C2D0'), { id: 'p12cap', maxStackLayers: 2 });
+      const stack = optimiseMix({ unit: unitOf(ind), orientationPolicy: 'sku', clearance: 0, basis: 'cartons', tolerance: 5, mode: 'util', noFill: true, rows: [{ product: p12cap, target: 60, priority: 'Normal' }, { product: P('Carbon Filters'), target: 40, priority: 'Normal' }] });
+      let worst = 0;
+      if (stack.ok) stack.scenarios.forEach(sc => sc.plan.placements.filter(p => p.productId === 'p12cap').forEach(p => { const above = new Set(sc.plan.placements.filter(q => q.z >= p.z + p.h - 1e-6 && q.x < p.x + p.l && p.x < q.x + q.l && q.y < p.y + p.w && p.y < q.y + q.w).map(q => q.z)).size; worst = Math.max(worst, above); }));
+      add(G, 'Maximum stack layers = 2 means at most one tier of any product rests on that carton', stack.ok && worst <= 1 && stack.scenarios.every(sc => sc.plan.validation.ok), stack.ok ? `most tiers found on a limited carton: ${worst}; loads ${stack.scenarios.map(sc => sc.counts.join('/')).join(' | ')}` : stack.errors.join(' '));
+      const pw = [[2200, 1600, 500, 300, 23], [1200, 1000, 275, 210, 19], [1100, 1100, 480, 285, 8]].map(([X, Y, a, b, want]) => { const so = createPatternSolver(a, b, X, Y); const rects = so.rects(X, Y); let ov = 0; for (let i = 0; i < rects.length; i++) for (let j = i + 1; j < rects.length; j++) { const A = rects[i], B = rects[j]; if (A.x < B.x + B.l - 1e-6 && B.x < A.x + A.l - 1e-6 && A.y < B.y + B.w - 1e-6 && B.y < A.y + A.w - 1e-6) ov++; } const out = rects.some(r => r.x < -1e-6 || r.y < -1e-6 || r.x + r.l > X + 1e-6 || r.y + r.w > Y + 1e-6); return { X, Y, a, b, want, n: so.count(X, Y), rects: rects.length, ov, out }; });
+      add(G, 'Floor patterns include 5-block (pinwheel) layouts – textbook 22×16/5×3 instance gives 23', pw.every(x => x.n >= x.want && x.rects === x.n && x.ov === 0 && !x.out), pw.map(x => `${x.X}×${x.Y} with ${x.a}×${x.b}: ${x.n} (≥ ${x.want})`).join(' · '));
+      const fb = optimiseMix({ unit: unitOf(ind), orientationPolicy: 'sku', clearance: 0, basis: 'cartons', tolerance: 5, mode: 'balanced', fillProducts: data.products, rows: [['P12C2D0', 40], ['P17C2D2', 25], ['Carbon Filters', 20], ['POSTreat', 15]].map(([sku, target]) => ({ product: P(sku), target, priority: 'Normal' })) });
+      const fOk = fb.ok && fb.scenarios.every(sc => sc.forecast && sc.forecast.valid && (!sc.forecast.after || sc.forecast.after.capUtil >= sc.forecast.before.capUtil - 1e-9));
+      add(G, 'Forecast fill: every scenario has a validated forecast that never lowers utilisation', fOk, fb.ok ? fb.scenarios.map(sc => `${sc.label}: +${sc.forecast.addCartons} cartons ${sc.forecast.before.capUtil}% → ${sc.forecast.after ? sc.forecast.after.capUtil : sc.forecast.before.capUtil}%`).join(' · ') : fb.errors.join(' '));
+    }
     const mm = _checkChainFeasibility(5000);
     add('Engine integrity', 'Fast column-block check gives the same answer as the step-by-step simulation (5,000 random cases)', mm === 0, `${mm} mismatches`);
     const passed = out.filter(o => o.pass).length;
@@ -2614,7 +2889,7 @@ function PalletEngineFactory() {
     return mismatches;
   }
 
-  return { _checkChainFeasibility, CONFIG, DEFAULTS, BRANDS, ASSESS_DEFAULTS, assessLayout, calcSingle, optimiseMix, planExact, planMulti, planPalletsInContainer, runSelfTests, normaliseProduct, validateProductRecord };
+  return { forecastFor, _checkChainFeasibility, CONFIG, DEFAULTS, BRANDS, ASSESS_DEFAULTS, assessLayout, calcSingle, optimiseMix, planExact, planMulti, planPalletsInContainer, runSelfTests, normaliseProduct, validateProductRecord };
 }
 </script>
 
@@ -2861,6 +3136,10 @@ function PalletEngineFactory() {
     $(`#${p}-base`).value = isPal ? (rec.baseHeight || 0) : 0;
     $(`#${p}-tare`).value = isPal ? (rec.tare || 0) : 0;
     $(`#${p}-maxg`).value = isPal ? (rec.maxGross || '') : (rec.maxPayload || '');
+    /* Default clearance: 0 mm on pallets, 5 mm for loose cartons in containers – only while the field still holds a default. */
+    const clr = $(`#${p}-clear`), prevKind = clr.dataset.kind;
+    if (!prevKind || clr.value === (prevKind === 'container' ? '5' : '0')) clr.value = isPal ? '0' : '5';
+    clr.dataset.kind = kind;
     $(`#${p}-base`).disabled = !isPal; $(`#${p}-tare`).disabled = !isPal;
     $(`#${p}-ovh`).checked = isPal && !!rec.allowOverhang;
     $(`#${p}-ovh`).disabled = !isPal; $(`#${p}-ovhmm`).disabled = !isPal;
@@ -2930,7 +3209,7 @@ function PalletEngineFactory() {
     const below = plan.placements.filter(p => p.layer === layerNo - 1);
     const hid = 'hatch' + (++svgSeq);
     let o = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Top view of ${g.kind === 'container' ? 'tier' : 'layer'} ${layerNo}">`;
-    o += `<defs><pattern id="${hid}" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="9" height="9" fill="#f4ecdf"/><line x1="0" y1="0" x2="0" y2="9" stroke="#d9c6a5" stroke-width="3"/></pattern></defs>`;
+    o += `<defs><pattern id="${hid}" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="9" height="9" fill="#f4ecdf"/><line x1="0" y1="0" x2="0" y2="9" stroke="#d9c6a5" stroke-width="3"/></pattern><pattern id="${hid}f" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#fff3cc"/><line x1="0" y1="0" x2="0" y2="8" stroke="${FORECAST_COLOR}" stroke-width="4"/></pattern></defs>`;
     if (ov) o += `<rect x="${X(-ov)}" y="${Y(-ov)}" width="${spanX * s}" height="${spanY * s}" fill="none" stroke="#b3261e" stroke-dasharray="5 4" stroke-width="1"><title>Overhang limit (${ov} mm per side)</title></rect>`;
     o += `<rect x="${X(0)}" y="${Y(0)}" width="${g.L * s}" height="${g.W * s}" fill="url(#${hid})" stroke="#7a5a2b" stroke-width="2"><title>${g.kind === 'container' ? 'Container floor' : 'Pallet deck'} ${g.L} × ${g.W} mm – hatched area = unused space</title></rect>`;
     for (const p of below) o += `<rect x="${X(p.x)}" y="${Y(p.y)}" width="${p.l * s}" height="${p.w * s}" fill="none" stroke="#8c99a8" stroke-dasharray="3 3" stroke-width="1"/>`;
@@ -2947,6 +3226,13 @@ function PalletEngineFactory() {
         if (h > 34 && w > 40) o += `<text x="${x + w / 2}" y="${y + h / 2 + fs}" font-size="${fs - 1}" text-anchor="middle" fill="${tc}">${esc(p.sku.length > 11 ? p.sku.slice(0, 10) + '…' : p.sku)}</text>`;
       }
       o += `</g>`;
+    }
+    for (const p of (opts.forecast || []).filter(q => q.layer === layerNo)) {
+      const x = X(p.x), y = Y(p.y), w = p.l * s, h = p.w * s;
+      o += `<g><title>FORECAST ${esc(p.id)} ${esc(p.sku)} – not in plan · ${fmt(p.l)}×${fmt(p.w)}×${fmt(p.h)} mm · ${esc(p.orientationDesc)} · x ${fmt(p.x)}, y ${fmt(p.y)}, z ${fmt(p.z)} mm</title>`;
+      o += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#${hid}f)" stroke="#b37400" stroke-width="1.2" stroke-dasharray="4 3"/>`;
+      if (w > 22 && h > 14) { const fs = Math.max(8, Math.min(12, h / 3.2, w / 4)); o += `<text x="${x + w / 2}" y="${y + h / 2 + (h > 34 ? -2 : fs / 3)}" font-size="${fs}" text-anchor="middle" fill="#5a3d00" font-weight="700">${esc(p.id)}</text>`; if (h > 34 && w > 40) o += `<text x="${x + w / 2}" y="${y + h / 2 + fs}" font-size="${fs - 1}" text-anchor="middle" fill="#5a3d00">${esc(p.sku.length > 11 ? p.sku.slice(0, 10) + '…' : p.sku)}</text>`; }
+      o += '</g>';
     }
     o += `<text x="${X(g.L / 2)}" y="${pad - 10}" font-size="11" text-anchor="middle" fill="#5a6b7d">Length ${fmt(g.L)} mm</text>`;
     o += `<text transform="translate(${pad - 10} ${Y(g.W / 2)}) rotate(-90)" font-size="11" text-anchor="middle" fill="#5a6b7d">Width ${fmt(g.W)} mm</text>`;
@@ -2965,7 +3251,8 @@ function PalletEngineFactory() {
     const floorY = padT + totalH * s;
     const Yz = zAbs => floorY - zAbs * s;
     const Xc = v => padL + (v + ov) * s;
-    let o = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Side elevation">`;
+    const fid = 'fce' + (++svgSeq);
+    let o = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" role="img" aria-label="Side elevation"><defs><pattern id="${fid}" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#fff3cc"/><line x1="0" y1="0" x2="0" y2="8" stroke="${FORECAST_COLOR}" stroke-width="4"/></pattern></defs>`;
     if (g.baseHeight > 0) o += `<rect x="${Xc(0)}" y="${Yz(g.baseHeight)}" width="${(axis === 'y' ? g.W : g.L) * s}" height="${g.baseHeight * s}" fill="#b98b52" stroke="#6d4c22"><title>Pallet base ${g.baseHeight} mm</title></rect>`;
     else o += `<rect x="${Xc(0)}" y="${floorY}" width="${(axis === 'y' ? g.W : g.L) * s}" height="5" fill="#b98b52"/><text x="${Xc(0)}" y="${floorY + 17}" font-size="10" fill="#6d4c22">${g.kind === 'container' ? 'Container floor' : 'Pallet base (0 mm entered)'}</text>`;
     /* Only the carton nearest the viewer is visible for each projected rectangle, so hidden ones are
@@ -2981,6 +3268,10 @@ function PalletEngineFactory() {
       const col = colorFor(p.productId);
       const a = axis === 'y' ? p.y : p.x, len = axis === 'y' ? p.w : p.l;
       o += `<rect x="${Xc(a)}" y="${Yz(g.baseHeight + p.z + p.h)}" width="${len * s}" height="${p.h * s}" fill="${col}" fill-opacity=".92" stroke="#1b2733" stroke-width=".8"><title>#${p.id} ${esc(p.sku)} · layer ${p.layer} · z ${p.z}–${p.z + p.h} mm</title></rect>`;
+    }
+    for (const p of opts.forecast || []) {
+      const a = axis === 'y' ? p.y : p.x, len = axis === 'y' ? p.w : p.l;
+      o += `<rect x="${Xc(a)}" y="${Yz(g.baseHeight + p.z + p.h)}" width="${len * s}" height="${p.h * s}" fill="url(#${fid})" stroke="#b37400" stroke-width="1" stroke-dasharray="4 3"><title>FORECAST ${esc(p.id)} ${esc(p.sku)} – not in plan · z ${p.z}–${p.z + p.h} mm</title></rect>`;
     }
     const maxY = Yz(totalH - (g.topClearance || 0));
     const stack = plan.kpis.stackHeight, sy = Yz(g.baseHeight + stack);
@@ -3003,10 +3294,11 @@ function PalletEngineFactory() {
     }
     return o + '</svg>';
   }
-  function legendHTML(plan) {
+  function legendHTML(plan, forecast) {
     const counts = {};
     plan.placements.forEach(p => { counts[p.productId] = counts[p.productId] || { sku: p.sku, n: 0 }; counts[p.productId].n++; });
     return Object.keys(counts).map(id => `<span><span class="sw" style="background:${colorFor(id)}"></span>${esc(counts[id].sku)} × ${counts[id].n}</span>`).join('') +
+      (forecast && forecast.length ? `<span><span class="sw forecast-sw"></span>Forecast – not in plan × ${forecast.length}</span>` : '') +
       `<span class="muted">◤ corner mark = footprint rotated 90° · diagonal = carton on its side · hatched = unused space · dashed = outline of the layer below</span>`;
   }
   function groupNote(plan, no) {
@@ -3036,16 +3328,15 @@ function PalletEngineFactory() {
     const shade = (c, f, a) => { const k = v => Math.round(clamp(f >= 1 ? v + (255 - v) * (f - 1) : v * f, 0, 255)); return `rgba(${k(c[0])},${k(c[1])},${k(c[2])},${a})`; };
     const ink = c => (0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2] > 150 ? '#1b2733' : '#ffffff');
 
-    function buildScene(plan) {
+    function buildScene(plan, forecast) {
       const g = plan.geom, isC = g.kind === 'container';
-      const boxes = plan.placements.map(p => {
-        const parts = String(p.orientation || '').split('×');
-        return { p, min: [p.x, p.y, p.z], max: [p.x + p.l, p.y + p.w, p.z + p.h], col: rgbOf(colorFor(p.productId)), hAxis: Math.max(0, parts.indexOf('H')) };
-      });
-      const seq = boxes.slice().sort(isC
+      const mk = (p, fcst) => { const parts = String(p.orientation || '').split('×'); return { p, forecast: fcst, min: [p.x, p.y, p.z], max: [p.x + p.l, p.y + p.w, p.z + p.h], col: rgbOf(fcst ? FORECAST_COLOR : colorFor(p.productId)), hAxis: Math.max(0, parts.indexOf('H')) }; };
+      const boxes = plan.placements.map(p => mk(p, false)).concat((forecast || []).map(p => mk(p, true)));
+      const seq = boxes.filter(b => !b.forecast).sort(isC
         ? (a, b) => (a.min[0] - b.min[0]) || (a.min[2] - b.min[2]) || (a.min[1] - b.min[1])
         : (a, b) => (a.p.layer - b.p.layer) || (a.min[2] - b.min[2]) || (a.min[1] - b.min[1]) || (a.min[0] - b.min[0]));
       seq.forEach((b, i) => { b.seq = i + 1; });
+      boxes.filter(b => b.forecast).forEach(b => { b.seq = 0; });
       /* Neighbour table for hidden-face culling: a face touching an identical neighbour
          face is never visible, so dense loads only draw their outer shell. */
       const R = v => Math.round(v * 10);
@@ -3145,10 +3436,11 @@ function PalletEngineFactory() {
         const pts3 = facePoints(b.min, b.max, ax, sg), pts = pts3.map(p => cam.P(p[0], p[1], p[2]));
         const nl = sg * LIGHT[ax];
         g2.beginPath(); pts.forEach((p, i) => (i ? g2.lineTo(p[0], p[1]) : g2.moveTo(p[0], p[1]))); g2.closePath();
-        g2.fillStyle = shade(b.col, 0.62 + 0.45 * Math.max(0, nl), alpha);
+        g2.fillStyle = shade(b.col, 0.62 + 0.45 * Math.max(0, nl), b.forecast ? 0.55 * alpha : alpha);
         g2.fill();
-        g2.strokeStyle = b.hot ? 'rgba(255,196,0,1)' : `rgba(20,30,40,${0.6 * alpha})`;
-        g2.lineWidth = b.hot ? 2.2 : 0.8;
+        g2.setLineDash(b.forecast ? [5, 4] : []);
+        g2.strokeStyle = b.forecast ? 'rgba(160,100,0,.95)' : b.hot ? 'rgba(255,196,0,1)' : `rgba(20,30,40,${0.6 * alpha})`;
+        g2.lineWidth = b.forecast ? 1.4 : b.hot ? 2.2 : 0.8;
         g2.stroke();
         polys.push(pts);
         const area = polyArea(pts);
@@ -3218,7 +3510,8 @@ function PalletEngineFactory() {
       for (const b of scene.boxes) {
         b.hot = false;
         b._shown = false;
-        if (b.seq > state.seqMax) continue;
+        if (b.forecast) { if (!state.forecast) continue; }
+        else if (b.seq > state.seqMax) continue;
         if (state.mode === 'upto' && b.p.layer > state.layer) continue;
         if (state.mode === 'only' && b.p.layer !== state.layer) { ghosts.push(b); continue; }
         shown.push(b);
@@ -3246,7 +3539,7 @@ function PalletEngineFactory() {
 
     function mount(host, plan, opts) {
       opts = opts || {};
-      const scene = buildScene(plan), n = scene.boxes.length;
+      const scene = buildScene(plan, opts.forecast), n = scene.boxes.filter(b => !b.forecast).length;
       const lab = tierWord(plan);
       host.innerHTML = `
         <div class="v3d-bar">
@@ -3263,7 +3556,7 @@ function PalletEngineFactory() {
           <span class="small muted" data-v="seqinfo">All ${n} cartons shown</span>
         </div>`;
       const cv = $('canvas', host), tip = $('.v3d-tip', host), stage = $('.v3d-stage', host);
-      const state = { yaw: PRESETS.iso[0], pitch: PRESETS.iso[1], zoom: 1, panX: 0, panY: 0, mode: 'all', layer: 1, seqMax: n, labels: true, arrows: true };
+      const state = { yaw: PRESETS.iso[0], pitch: PRESETS.iso[1], zoom: 1, panX: 0, panY: 0, mode: 'all', layer: 1, seqMax: n, labels: true, arrows: true, forecast: false };
       let hits = [], raf = 0, timer = null, W = 0, H = 0;
       const draw = () => {
         raf = 0;
@@ -3323,7 +3616,7 @@ function PalletEngineFactory() {
         for (let i = hits.length - 1; i >= 0 && !found; i--) if (hits[i].polys.some(pts => inPoly(x, y, pts))) found = hits[i].b;
         if (!found) { tip.hidden = true; return; }
         const p = found.p;
-        tip.innerHTML = `<b>#${p.id} ${esc(p.sku)}</b><br>${esc(p.orientationDesc)} (${esc(p.orientation)})<br>${p.l} × ${p.w} × ${p.h} mm · ${fmt(p.weight, 2)} kg<br>${lab} ${p.layer} · x ${fmt(p.x)} · y ${fmt(p.y)} · z ${fmt(p.z)} mm<br>Loading step ${found.seq}`;
+        tip.innerHTML = `${found.forecast ? '<b style="color:#ffcf5c">FORECAST – not in plan</b><br>' : ''}<b>#${p.id} ${esc(p.sku)}</b><br>${esc(p.orientationDesc)} (${esc(p.orientation)})<br>${p.l} × ${p.w} × ${p.h} mm · ${fmt(p.weight, 2)} kg<br>${lab} ${p.layer} · x ${fmt(p.x)} · y ${fmt(p.y)} · z ${fmt(p.z)} mm<br>Loading step ${found.seq}`;
         tip.hidden = false;
         tip.style.left = Math.min(x + 14, W - 230) + 'px'; tip.style.top = Math.max(4, y - 10) + 'px';
       });
@@ -3335,6 +3628,7 @@ function PalletEngineFactory() {
       draw();
       return {
         host,
+        setForecast(on) { state.forecast = !!on; redraw(); },
         setLayer(no, mode) { state.layer = no; if (mode) { state.mode = mode; $('[data-v="mode"]', host).value = mode; } redraw(); },
         destroy() { stop(); if (ro) ro.disconnect(); }
       };
@@ -3345,7 +3639,7 @@ function PalletEngineFactory() {
       const dpr = window.devicePixelRatio || 1;
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
       const scene = buildScene(plan);
-      render(cv, { yaw: PRESETS.iso[0], pitch: PRESETS.iso[1], zoom: 1, panX: 0, panY: 0, mode: 'all', layer: 1, seqMax: scene.boxes.length, labels: true, arrows: true }, scene, W, H);
+      render(cv, { yaw: PRESETS.iso[0], pitch: PRESETS.iso[1], zoom: 1, panX: 0, panY: 0, mode: 'all', layer: 1, seqMax: scene.boxes.length, labels: true, arrows: true, forecast: false }, scene, W, H);
       try { return cv.toDataURL('image/png'); } catch (e) { return ''; }
     }
     return { mount, snapshot };
@@ -3390,28 +3684,38 @@ function PalletEngineFactory() {
       <p class="small muted">SKUs from your mix are suggested first, then other active products (${fill.extrasConsidered || 0} checked). Every suggestion was re-planned and passed the physical check. ${verb === 'Add to plan' ? 'Adding re-plans the whole layout as a new “Adjusted plan”; extra SKUs are fixed quantities and do not count towards the target mix.' : 'Adding increases the quantity in the table and re-plans the shipment.'}</p></div>`;
   }
 
-  function renderPlanView(host, plan, title) {
+  const FORECAST_COLOR = '#F2A900';
+  function renderPlanView(host, plan, title, forecast, opts) {
+    opts = opts || {};
     if (host._v3d) { host._v3d.destroy(); liveViews.delete(host._v3d); host._v3d = null; }
     if (!plan || !plan.placements.length) { host.innerHTML = `<h2>${esc(title || 'Loading plan')}</h2><div class="empty">No cartons placed.</div>`; return; }
     const lab = tierWord(plan);
-    const state = { layer: 1, axis: 'x' };
+    const fc = forecast && forecast.valid && forecast.placements.length ? forecast : null;
+    const state = { layer: 1, axis: 'x', forecast: false };
+    const fcLayers = fc ? fc.layers : [];
+    const layerButtons = () => plan.layers.map(L => `<button data-layer="${L.no}">${lab} ${L.no}</button>`).join('') + (state.forecast ? fcLayers.map(L => `<button data-layer="${L.no}" class="fc">${lab} ${L.no} (forecast)</button>`).join('') : '');
     host.innerHTML = `
-      <div class="panel-head"><h2>${esc(title || 'Loading plan')}</h2>${validationHTML(plan.validation)}</div>
+      <div class="panel-head"><h2>${esc(title || 'Loading plan')}</h2><div class="inline">${fc ? `<label class="chk small"><input type="checkbox" data-v="forecast"> Show forecast fill</label>` : ''}${validationHTML(plan.validation)}</div></div>
+      ${fc ? `<div class="msg forecast-note" hidden data-v="fcnote"><span><b>FORECAST – not part of this plan.</b> Filling the free space with <b>+${fmt(fc.addCartons)} cartons</b> (${fc.adds.map(a => `${esc(a.sku)} × ${a.add}`).join(', ')}, +${fmt(fc.addWeight, 1)} kg) would use <b>${fmt(fc.after.capUtil, 0)}%</b> instead of ${fmt(fc.before.capUtil, 0)}%. Forecast cartons are drawn hatched in orange.</span>${opts.mode && opts.mode !== 'contpal' ? `<button class="btn small primary" data-action="forecast-add" data-mode="${esc(opts.mode)}" data-ref="${esc(opts.ref || '')}">Add forecast to plan</button>` : ''}</div>` : ''}
       <h4 style="margin:4px 0 2px">3D view – drawn from the calculated carton positions</h4>
       <div class="v3d-host"></div>
       <h4 style="margin:16px 0 2px">${lab} plans (top view)</h4>
       <div class="small muted">Select a ${lab.toLowerCase()} to see its exact top-down loading pattern (drawn from the calculated carton coordinates). ${plan.layerGroups.filter(gr => gr.to > gr.from).map(gr => `${lab}s ${gr.from}–${gr.to} use the same layout.`).join(' ')}</div>
-      <div class="layerbar">${plan.layers.map(L => `<button data-layer="${L.no}">${lab} ${L.no}</button>`).join('')}</div>
+      <div class="layerbar">${layerButtons()}</div>
       <div class="pv-grid"><div class="pv-top"></div><div class="pv-info"></div></div>
       <div class="pv-elev-head"><h4>Side elevation (actual heights)</h4><div class="seg"><button data-axis="x" class="on">Front – along length</button><button data-axis="y">Side – along width</button></div></div>
       <div class="pv-elev"></div>
-      <div class="legend">${legendHTML(plan)}</div>
+      <div class="legend"></div>
       ${plan.meta && plan.meta.blocks ? blocksTableHTML(plan) : ''}`;
     const draw = () => {
+      const fcList = state.forecast && fc ? fc.placements : null;
+      $('.layerbar', host).innerHTML = layerButtons();
       $$('.layerbar button', host).forEach(b => b.classList.toggle('on', +b.dataset.layer === state.layer));
       $$('.pv-elev-head .seg button', host).forEach(b => b.classList.toggle('on', b.dataset.axis === state.axis));
-      $('.pv-top', host).innerHTML = topViewSVG(plan, state.layer);
+      $('.pv-top', host).innerHTML = topViewSVG(plan, state.layer, { forecast: fcList });
       const L = plan.layers.find(x => x.no === state.layer);
+      const FL = !L && fcList ? fcLayers.find(x => x.no === state.layer) : null;
+      const fcHere = fcList ? fcList.filter(p => p.layer === state.layer) : [];
       $('.pv-info', host).innerHTML = L ? `<h3>${lab} ${L.no}</h3>
         <dl class="dl" style="margin-top:8px">
           <dt>${lab} height</dt><dd>${fmt(L.height)} mm</dd><dt>From – to</dt><dd>${fmt(L.z)} – ${fmt(L.top)} mm</dd>
@@ -3419,14 +3723,21 @@ function PalletEngineFactory() {
         </dl>
         <h4 style="margin-top:12px">Products in ${lab.toLowerCase()}</h4>
         <div>${Object.keys(L.products).map(k => `<div>${esc(k)} × ${L.products[k]}</div>`).join('')}</div>
-        <p class="small" style="margin-top:10px;color:var(--heading)">${esc(groupNote(plan, L.no))}</p>` : '';
-      $('.pv-elev', host).innerHTML = elevationSVG(plan, state.axis);
+        ${fcHere.length ? `<div class="small" style="margin-top:8px;color:#8a5f00"><b>Forecast in this ${lab.toLowerCase()}:</b> ${Object.entries(fcHere.reduce((m, p) => { m[p.sku] = (m[p.sku] || 0) + 1; return m; }, {})).map(([k, v]) => `${esc(k)} × ${v}`).join(', ')}</div>` : ''}
+        <p class="small" style="margin-top:10px;color:var(--heading)">${esc(groupNote(plan, L.no))}</p>` : FL ? `<h3>${lab} ${FL.no} (forecast)</h3>
+        <p class="small" style="margin-top:8px;color:#8a5f00">Forecast cartons only – from ${fmt(FL.z)} mm: ${Object.entries(fcHere.reduce((m, p) => { m[p.sku] = (m[p.sku] || 0) + 1; return m; }, {})).map(([k, v]) => `${esc(k)} × ${v}`).join(', ')}</p>` : '';
+      $('.pv-elev', host).innerHTML = elevationSVG(plan, state.axis, { forecast: fcList });
+      $('.legend', host).innerHTML = legendHTML(plan, fcList);
+      const note = $('[data-v="fcnote"]', host); if (note) note.hidden = !state.forecast;
+      if (host._v3d) host._v3d.setForecast(state.forecast);
     };
     $('.layerbar', host).addEventListener('click', e => { const b = e.target.closest('button[data-layer]'); if (b) { state.layer = +b.dataset.layer; draw(); if (host._v3d) host._v3d.setLayer(state.layer, 'upto'); } });
     $('.pv-elev-head .seg', host).addEventListener('click', e => { const b = e.target.closest('button[data-axis]'); if (b) { state.axis = b.dataset.axis; draw(); } });
-    draw();
+    const fcBox = $('[data-v="forecast"]', host);
+    if (fcBox) fcBox.addEventListener('change', () => { state.forecast = fcBox.checked; if (!state.forecast && !plan.layers.some(L => L.no === state.layer)) state.layer = 1; draw(); });
     liveViews.forEach(v => { if (!v.host.isConnected) { v.destroy(); liveViews.delete(v); } });
-    try { host._v3d = View3D.mount($('.v3d-host', host), plan); liveViews.add(host._v3d); } catch (err) { console.error(err); $('.v3d-host', host).innerHTML = '<div class="msg warn">The 3D view could not be drawn in this browser.</div>'; }
+    try { host._v3d = View3D.mount($('.v3d-host', host), plan, { forecast: fc ? fc.placements : null }); liveViews.add(host._v3d); } catch (err) { console.error(err); $('.v3d-host', host).innerHTML = '<div class="msg warn">The 3D view could not be drawn in this browser.</div>'; }
+    draw();
   }
   function tierWord(plan) { return plan.geom.kind === 'container' || (plan.meta && plan.meta.method === 'blocks') ? 'Tier' : 'Layer'; }
   function blocksTableHTML(plan) {
@@ -3491,11 +3802,11 @@ function PalletEngineFactory() {
         <h4>Allowed orientations</h4><ul>${res.details.allowedOrientations.map(o => `<li>${esc(o)}</li>`).join('')}</ul>
         <h4>Method &amp; result</h4><ul>${res.explanation.map(e => `<li>${esc(e)}</li>`).join('')}</ul>
       </div></details></div>`;
-    renderPlanView($('#single-plan'), res.plan, 'Loading plan');
+    renderPlanView($('#single-plan'), res.plan, 'Loading plan', res.forecast, { mode: 'single', ref: 'base' });
     const adj = S.single.adjusted;
     if (adj) {
       host.insertAdjacentHTML('afterbegin', adjustedBlockHTML(adj, 'single', 'single-adj-plan'));
-      renderPlanView($('#single-adj-plan'), adj.plan, 'Adjusted loading plan');
+      renderPlanView($('#single-adj-plan'), adj.plan, 'Adjusted loading plan', adj.forecast, { mode: 'single', ref: 'adj' });
       rememberLast(adj.plan, 'Single SKU – adjusted plan');
     }
   }
@@ -3510,7 +3821,17 @@ function PalletEngineFactory() {
       <div class="panel" id="${planId}"></div>`;
   }
   const rowsFromScenario = sc => sc.rows.map(r => ({ product: productById(r.productId), target: r.locked ? null : r.target, priority: r.priority, locked: r.locked, added: !!r.added, lockedQty: r.locked ? r.cartons : null, min: r.min ?? null, max: r.max ?? null }));
-  async function applyFill(mode, ref, key) {
+  function forecastOf(mode, ref) {
+    if (mode === 'mix') { const sc = S.mix && S.mix.res.scenarios[+ref]; return sc && sc.forecast; }
+    if (mode === 'single') { if (!S.single) return null; return ref === 'adj' ? (S.single.adjusted && S.single.adjusted.forecast) : S.single.res.forecast; }
+    const u = S[mode] && S[mode].res && S[mode].res.units[+ref]; return u && u.forecast;
+  }
+  async function applyForecast(mode, ref) {
+    const f = forecastOf(mode, ref);
+    if (!f || !f.adds || !f.adds.length) { toast('No forecast to add.'); return; }
+    await applyFill(mode, ref, null, { adds: f.adds.map(a => ({ productId: a.productId, sku: a.sku, add: a.add, inMix: a.inMix })) });
+  }
+  async function applyFill(mode, ref, key, sugOverride) {
     let fill, baseCounts, rows, reqBase;
     if (mode === 'mix') {
       const sc = S.mix && S.mix.res.scenarios[+ref];
@@ -3528,7 +3849,7 @@ function PalletEngineFactory() {
       if (!u) return;
       fill = u.fill;
     }
-    const sug = fill && (key === 'c' ? fill.combined : fill.suggestions[+key]);
+    const sug = sugOverride || (fill && (key === 'c' ? fill.combined : fill.suggestions[+key]));
     if (!sug) return;
     if (mode === 'exact' || mode === 'multi') {
       const basis = $(`#${mode}-basis`).value;
@@ -3706,7 +4027,7 @@ function PalletEngineFactory() {
         </div></div>
       <div class="panel" id="mix-plan"></div>
       <div class="panel"><details><summary>SHOW CALCULATION DETAILS</summary><div class="details-body">${mixDetailsHTML(res, sc)}</div></details></div>`;
-    renderPlanView($('#mix-plan'), sc.plan, `Pallet layout — scenario ${S.mixSel + 1}: ${sc.label}`);
+    renderPlanView($('#mix-plan'), sc.plan, `Pallet layout — scenario ${S.mixSel + 1}: ${sc.label}`, sc.forecast, { mode: 'mix', ref: String(S.mixSel) });
   }
   function mixDetailsHTML(res, sc) {
     const d = res.details, basisName = { cartons: 'Carton quantity', units: 'Saleable unit quantity', weight: 'Product weight' }[d.basis];
@@ -3808,7 +4129,7 @@ function PalletEngineFactory() {
         <div class="btn-row"><button class="btn small" data-action="save-plan" data-mode="${mode}">Save plan</button><button class="btn small" data-action="csv" data-mode="${mode}">Export CSV</button><button class="btn small" data-action="print" data-mode="${mode}">Print / Save PDF</button></div></div>
         ${head}<h4 style="margin:14px 0 6px">${unitWord.toUpperCase()} COMPOSITION</h4>${compTable}</div>
       ${u && u.plan ? `${statusCardHTML(u.assessment, { prefix: `${unitWord[0].toUpperCase() + unitWord.slice(1)} ${u.no}` })}${fillPanelHTML(u.fill, mode, String(sel))}<div class="panel">${kpiCards(u.plan.kpis)}</div><div class="panel" id="${mode}-plan"></div>` : ''}`;
-    if (u && u.plan) renderPlanView($(`#${mode}-plan`), u.plan, `${unitWord[0].toUpperCase() + unitWord.slice(1)} ${u.no}: ${u.description}`);
+    if (u && u.plan) renderPlanView($(`#${mode}-plan`), u.plan, `${unitWord[0].toUpperCase() + unitWord.slice(1)} ${u.no}: ${u.description}`, u.forecast, { mode, ref: String(sel) });
   }
 
   /* ===================== PALLETS INTO A CONTAINER ====================== */
@@ -3853,7 +4174,7 @@ function PalletEngineFactory() {
       </div>
       <p class="small muted">Loaded pallet ${res.pallet.length} × ${res.pallet.width} × ${res.pallet.loadedHeight} mm, ${fmt(res.pallet.gross, 1)} kg. Door opening height ${fmt(res.container.doorHeight)} mm. Both pallet orientations and mixed rows are tested.</p></div>
       <div class="panel" id="contpal-plan"></div>`;
-    renderPlanView($('#contpal-plan'), res.plan, 'Container floor plan (pallets)');
+    renderPlanView($('#contpal-plan'), res.plan, 'Container floor plan (pallets)', res.forecast, { mode: 'contpal' });
   }
 
   /* =============================== MASTERS ============================== */
@@ -4310,8 +4631,10 @@ function PalletEngineFactory() {
       <p>Starting from the planned cartons, the engine adds cartons of each SKU in your mix, then of every other active product, until nothing more fits, and also builds a combined best fill. Each suggestion is re-planned from scratch and physically validated before it is shown. “Add to plan” creates an Adjusted plan with its own layout and traffic light.</p>
       <h4>8 · 3D view</h4>
       <p>The 3D view is drawn from the same carton coordinates as the tables. Arrows on the carton sides point to each carton’s original top, like the “this way up” print on a real carton, so upright and turned cartons are easy to tell apart. “Play loading sequence” shows the order in which to place the cartons.</p>
+      <h4>9 · Forecast fill</h4>
+      <p>Every loading plan can show a forecast of what would fill the remaining space: the planned cartons stay where they are, and the exposed pallet floor and carton tops are filled with cartons of the mix SKUs first, then other active products, stacked to the usable height within the weight limit and the stacking limits. The combined load passes the same physical check; forecast cartons are drawn hatched in orange and are not part of the plan until “Add forecast to plan” is used (which re-plans the whole load).</p>
       <h4>Assumptions (version 1)</h4>
-      <ul><li>Dimensions are outer carton dimensions; cm values are converted to mm.</li><li>Maximum height includes the pallet base; usable height = maximum − base.</li><li>Clearance is applied between cartons (not at the pallet edge).</li><li>Overhang, when allowed, applies to the pallet footprint; upper layers still need full support.</li><li>“Maximum stack layers” limits the number of layers a SKU may occupy; maximum stack weight is stored for future use.</li><li>Container weights are payload limits; road limits may be lower.</li></ul>
+      <ul><li>Dimensions are outer carton dimensions; cm values are converted to mm.</li><li>Maximum height includes the pallet base; usable height = maximum − base.</li><li>Clearance is applied between cartons (not at the pallet edge); it defaults to 0 mm on pallets, 5 mm for loose cartons in containers and 25 mm between pallets in a container.</li><li>Overhang, when allowed, applies to the pallet footprint; upper layers still need full support.</li><li>“Maximum stack layers” is a crush-strength limit: a carton of that SKU never has more than (maximum − 1) tiers of any product resting on it; fragile cartons carry nothing. Maximum stack weight is stored for future use.</li><li>Container weights are payload limits; road limits may be lower.</li></ul>
       </div>`;
   }
 
@@ -4340,6 +4663,7 @@ function PalletEngineFactory() {
       case 'unit-select': S[b.dataset.mode + 'Sel'] = +b.dataset.i; renderQty(b.dataset.mode); break;
       case 'cp-use-last': useLastPallet(); break;
       case 'fill-add': applyFill(b.dataset.mode, b.dataset.ref, b.dataset.key); break;
+      case 'forecast-add': applyForecast(b.dataset.mode, b.dataset.ref); break;
       case 'adj-discard': if (S.single) { S.single.adjusted = null; renderSingle(); } break;
       case 'assess-reset': try { localStorage.removeItem(ASSESS_KEY); } catch (err) { /* ignore */ } renderAssessSettings(); toast('Thresholds reset to defaults.'); break;
       case 'save-plan': savePlan(b.dataset.mode); break;

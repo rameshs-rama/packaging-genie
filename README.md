@@ -20,6 +20,7 @@ Packaging Genie is a browser-based pallet and container loading optimiser. You c
 
   Stability, space used, target mix, weight and height are each checked, with plain-language advice. You can change the thresholds in the Self-Test & Method tab.
 - **What else fits?** Suggests extra cartons of your mix SKUs, then other active products, plus a combined best fill, to bring the load closer to 100%. Every suggestion is re-planned and physically validated. “Add to plan” creates an Adjusted plan with its own layout and status.
+- **Forecast fill (overlay):** every loading plan has a “Show forecast fill” switch. It keeps the planned cartons exactly where they are and draws, hatched in orange, the extra cartons that would fill the remaining floor space and carton tops (mix SKUs first, then other active products), with the utilisation it would reach. The combined load passes the same physical check. “Add forecast to plan” turns it into a real plan.
 - **Product Master brands:** Phoenix Gravity, RAMA or C Line. SKU dropdowns are grouped by brand, and “Add all active SKUs of <brand>” fills the mix table with one brand.
 - **Light and dark mode:** the app follows your system setting by default, and the header button switches it. Drawings keep a light background so prints look the same in both modes.
 - **Every result is physically validated.** The app checks footprint, overlap, height, weight, orientation rules, 100% base support and carton counts, then draws the layout from the real carton coordinates.
@@ -118,10 +119,10 @@ Saved Plans shows how much storage is used. A layout larger than 1 MB is saved a
 
 - **Dimensions** are outer carton dimensions. Values entered in cm are converted to mm.
 - **Height:** maximum height includes the pallet base, so usable height = maximum − base height.
-- **Clearance** applies between cartons. An upper carton never bridges the clearance gap between two lower cartons: it must rest fully on real carton tops.
+- **Clearance** applies between cartons. An upper carton never bridges the clearance gap between two lower cartons: it must rest fully on real carton tops. Defaults: 0 mm on pallets, 5 mm for loose cartons in containers, 25 mm between pallets in a container (published container capacities assume such gaps).
+- **Maximum stack layers** is a crush-strength limit: a carton of that SKU never has more than (maximum − 1) tiers of any product resting on it. Fragile cartons carry nothing.
 - **Overhang** is off by default. When allowed, it applies up to the chosen number of mm per side. Upper cartons still need full support.
 - **Fragile** cartons never carry other cartons.
-- **Maximum stack layers** limits how many cartons of that SKU are stacked in one column or layer sequence.
 - **Maximum stack weight** is stored for a future version.
 - **Container figures** are typical ISO internal sizes and payloads. Confirm them with your carrier, because road weight limits may be lower.
 - **Target % of locked SKUs:** when a SKU's quantity is locked, the target % of the other SKUs applies to the optimised (unlocked) part of the load.
